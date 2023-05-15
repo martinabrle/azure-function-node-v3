@@ -27,8 +27,15 @@ you can now test the function by pointing your browser to the following URL:
 ```
 https://[%PROJECT_NAME%]-[%ENVIRONMENT_NAME%]-function-app.azurewebsites.net/api/HttpTrigger?code=[%ACCESS_KEY_COMES_HERE%]&name=Jonathan
 ```
+or alternatively, using curl:
+```
+curl -i \
+-d '{"key1":"value1", "key2":"value2"}' \
+-H "Content-Type: application/json" \
+-X POST "https://[%PROJECT_NAME%]-[%ENVIRONMENT_NAME%]-function-app.azurewebsites.net/api/HttpTrigger?code=[%ACCESS_KEY_COMES_HERE%]&Name=Jonathan"
+```
 
-This Azure function was creating by following [this](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-node?pivots=nodejs-model-v3&tabs=azure-cli%2Cbrowser) tutorial.
+This Azure function was created by following [this](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-node?pivots=nodejs-model-v3&tabs=azure-cli%2Cbrowser) tutorial.
 
 Init the directory for Azure functions:
 ```
