@@ -50,11 +50,8 @@ resource "azurerm_linux_function_app" "function_app" {
   storage_account_access_key  = azurerm_storage_account.storage_account.primary_access_key
   functions_extension_version = "~4"
   app_settings = {
-    #"WEBSITE_RUN_FROM_PACKAGE"              = "1",
     "APPINSIGHTS_INSTRUMENTATIONKEY"        = azurerm_application_insights.application_insights.instrumentation_key,
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.application_insights.connection_string,
-    #"FUNCTIONS_EXTENSION_VERSION"           = "~4",
-    #"FUNCTIONS_WORKER_RUNTIME"              = "node",
   }
   site_config {
     app_scale_limit          = 1

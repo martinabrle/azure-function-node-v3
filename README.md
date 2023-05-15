@@ -16,7 +16,7 @@ terraform apply
 
 Then you need to get to the parent directory:
 ```
-cd ...
+cd ..
 ```
 and finally deploy the function:
 ```
@@ -25,7 +25,7 @@ func azure functionapp publish [%PROJECT_NAME%]-[%ENVIRONMENT_NAME%]-function-ap
 
 you can now test the function by pointing your browser to the following URL:
 ```
-https://[%PROJECT_NAME%]-[%ENVIRONMENT_NAME%]-function-app.azurewebsites.net/api/HttpTrigger?code=[%ACCESS_KEY_COMES_HERE%]==&name=Jonathan
+https://[%PROJECT_NAME%]-[%ENVIRONMENT_NAME%]-function-app.azurewebsites.net/api/HttpTrigger?code=[%ACCESS_KEY_COMES_HERE%]&name=Jonathan
 ```
 
 This Azure function was creating by following [this](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-node?pivots=nodejs-model-v3&tabs=azure-cli%2Cbrowser) tutorial.
@@ -39,3 +39,5 @@ and create the Azure function (here I used JavaScript and Node.JS v18)
 func new
 ```
 you can run this function locally using ```func start```, but you would first need to add a link to Azure Storage property in ```local.settings.json```
+
+after trying this, you may want to investigate the Javascript v4(preview) programming model, as announced [here](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/azure-functions-version-4-of-the-node-js-programming-model-is-in/ba-p/3773541)
