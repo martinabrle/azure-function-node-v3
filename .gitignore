@@ -20,7 +20,7 @@ project.lock.json
 /data
 .secrets
 appsettings.json
-#TODO: local.settings.json
+local.settings.json
 
 node_modules
 dist
