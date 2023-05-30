@@ -12,3 +12,8 @@ variable "location" {
   type = string
   description = "Azure region"
 }
+
+variable "destination_file_share_name" {
+  type = string
+  description = "File share"
+}

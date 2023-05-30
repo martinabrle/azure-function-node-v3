@@ -1,0 +1,12 @@
+{
+  "bindings": [
+    {
+      "name": "myBlob",
+      "type": "blobTrigger",
+      "dataType": "stream",
+      "direction": "in",
+      "path": "whatever/{name}",
+      "connection": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING"
+    }
+  ]
+}

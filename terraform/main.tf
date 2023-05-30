@@ -26,6 +26,19 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = "LRS"
 }
 
+resource "azurerm_storage_account" "destination_storage_account" {
+  name                     = "${var.project}${var.environment}storagedst"
+  resource_group_name      = azurerm_resource_group.resource_group.name
+  location                 = var.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
+resource "azurerm_storage_share" "destination_storage_account_share" {
+  name                 = var.destination_file_share_name
+  storage_account_name = azurerm_storage_account.destination_storage_account.name
+  quota                = 5
+}
 resource "azurerm_application_insights" "application_insights" {
   name                = "${var.project}-${var.environment}-application-insights"
   location            = var.location
@@ -52,6 +65,8 @@ resource "azurerm_linux_function_app" "function_app" {
   app_settings = {
     "APPINSIGHTS_INSTRUMENTATIONKEY"        = azurerm_application_insights.application_insights.instrumentation_key,
     "APPLICATIONINSIGHTS_CONNECTION_STRING" = azurerm_application_insights.application_insights.connection_string,
+    "DESTINATION_STORAGE_ACCOUNT_CONNECTION_STRING" = azurerm_storage_account.destination_storage_account.primary_connection_string,
+    "DESTINATION_STORAGE_ACCOUNT_CONNECTION_STRING" = azurerm_storage_share.destination_storage_account_share.name
   }
   site_config {
     app_scale_limit          = 1
